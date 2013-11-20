@@ -60,7 +60,7 @@
 		}).addTo(map);
 
 
-		// control that shows state info on hover
+		// control that shows province info on hover
 		var info = L.control();
 
 		info.onAdd = function (map) {
@@ -72,7 +72,7 @@
 		info.update = function (props) {
 			this._div.innerHTML = '<h4>Food Consumption Score</h4>' +  (props ?
 				'<b>' + props.Province + '</b><br />' + props.ReduceCoun + ' respondents'
-				: 'Hover over a state');
+				: 'Hover over a province');
 		};
 
 		info.addTo(map);
