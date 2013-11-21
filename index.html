@@ -57,7 +57,7 @@
 		var map = L.map('map').setView([-2.879866,23.656378], 5);
 
 		var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {
-			attribution: 'Map data &copy; 2011 OpenStreetMap contributors',
+			attribution: 'Map data &copy; 2013 OpenStreetMap contributors',
 			key: 'BC9A493B41014CAABB98F0471D759707',
 			styleId: 22677
 		}).addTo(map);
@@ -75,7 +75,9 @@
 		info.update = function (props) {
 			this._div.innerHTML = '<h4>Food Consumption Score</h4>' +  (props ?
 				'<b>' + props.NAME_1 + '</b><br />'
-				+ props.Poor/props.TotSample*100 + '% poor food consumption score' + '<br />' +
+				+ props.Poor/props.TotSample*100 + '% poor' + '<br />' +
+				+ props.Borderline/props.TotSample*100 + '% borderline' + '<br />' +
+				+ props.Acceptable/props.TotSample*100 + '% acceptable' + '<br />' +
 				+ props.TotSample + ' respondents'
 				: 'Hover over a province');
 		};
