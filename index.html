@@ -144,7 +144,7 @@
 		
 	
 				
-		var geojsonLayer = new L.GeoJSON.AJAX("./drc.json");
+		var geojsonLayer = new L.GeoJSON.AJAX("./drc.json", {style: style, onEachFeature: onEachFeature});
 
 		var mapbox = L.tileLayer('https://a.tiles.mapbox.com/v3/geopoll.map-7txcgmr7/{z}/{x}/{y}.png').addTo(map);
 
