@@ -56,12 +56,8 @@
 
 		var map = L.map('map').setView([-2.879866,23.656378], 5);
 
-		var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {
-			attribution: 'Map data &copy; 2013 OpenStreetMap contributors',
-			key: 'BC9A493B41014CAABB98F0471D759707',
-			styleId: 22677
-		}).addTo(map);
-
+		var mapbox = L.tileLayer('https://a.tiles.mapbox.com/v3/geopoll.map-7txcgmr7/{z}/{x}/{y}.png').addTo(map);
+		
 
 		// control that shows province info on hover
 		var info = L.control();
@@ -149,7 +145,7 @@
 			onEachFeature: onEachFeature
 		}).addTo(map);
 
-		map.attributionControl.addAttribution('Survey data &copy; <a href="http://www.geopoll.com">GeoPoll</a>');
+		map.attributionControl.addAttribution('Survey data &copy; <a href="http://www.geopoll.com" target="_blank">GeoPoll</a>');
 
 
 		var legend = L.control({position: 'bottomright'});
