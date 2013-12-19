@@ -116,10 +116,9 @@
 		}
 		
 	
-		var geojsonLayer = new L.GeoJSON.AJAX("./drc.json", {style: style, onEachFeature: onEachFeature});
-		geojsonLayer.addUrl("./kenya.json");
+		var geojsonLayer = new L.GeoJSON.AJAX("./kenya.json", {style: style, onEachFeature: onEachFeature});
 
-		var map = L.map('map').setView([-2.879866,23.656378], 5);
+		var map = L.map('map').setView([0.576503,37.839890], 6);
 
 		// control that shows province info on hover
 		var info = L.control();
@@ -131,13 +130,13 @@
 		};
 
 		info.update = function (props) {
-			this._div.innerHTML = '<h2>Food Consumption Scores</h2><h3>December 2013</h3>' + (props ?
+			this._div.innerHTML = '<h4>Food Consumption Score</h4>' +  (props ?
 				'<b>' + props.NAME_1 + '</b><br />'
 				+ Math.round(props.Poor/props.TotSample*100) + '% poor' + '<br />' +
 				+ Math.round(props.Borderline/props.TotSample*100) + '% borderline' + '<br />' +
 				+ Math.round(props.Acceptable/props.TotSample*100) + '% acceptable' + '<br />' +
 				+ props.TotSample + ' respondents'
-				: 'Hover over a region');
+				: 'Hover over a province');
 		};
 
 		info.addTo(map);
@@ -156,7 +155,7 @@
 
 			var div = L.DomUtil.create('div', 'info legend'),
 				grades = [5, 10, 15, 20, 25, 30, 35, 40],
-				labels = ['% with poor food <br> consumption scores'],
+				labels = [],
 				from, to;
 
 			for (var i = 0; i < grades.length; i++) {
