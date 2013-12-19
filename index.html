@@ -50,6 +50,7 @@
 
 	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="leaflet.ajax.min.js"></script>
 	<script type="text/javascript" src="drc.js"></script>
 </head>
 	
@@ -58,11 +59,7 @@
 	<script type="text/javascript">
 	
 
-
 		var map = L.map('map').setView([-2.879866,23.656378], 5);
-
-		var mapbox = L.tileLayer('https://a.tiles.mapbox.com/v3/geopoll.map-7txcgmr7/{z}/{x}/{y}.png').addTo(map);
-		
 
 		// control that shows province info on hover
 		var info = L.control();
@@ -145,18 +142,18 @@
 			});
 		}
 		
+	
+				
+		var geojsonLayer = new L.GeoJSON.AJAX("./drc.json");
 
-		$.getJSON("./drc.geojson", function(data) {
-			var geojson = L.geoJson(data, {
-			onEachFeature: function (feature, layer) {
-			layer.bindPopup(feature.properties.name);
-			}
-			});
+		var mapbox = L.tileLayer('https://a.tiles.mapbox.com/v3/geopoll.map-7txcgmr7/{z}/{x}/{y}.png').addTo(map);
+
 		
-			geojson.addTo(map);
-			map.attributionControl.addAttribution('Survey data &copy; <a href="http://www.geopoll.com" target="_blank">GeoPoll</a>');
-		});
-
+		geojsonLayer.addTo(map);
+		
+		map.attributionControl.addAttribution('Survey data &copy; <a href="http://www.geopoll.com" target="_blank">GeoPoll</a>');
+		
+		
 		var legend = L.control({position: 'bottomright'});
 
 		legend.onAdd = function (map) {
